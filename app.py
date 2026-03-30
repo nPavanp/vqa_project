@@ -1,5 +1,10 @@
 import gradio as gr
 from inference import predict
+import os
+
+port = int(os.environ.get("PORT", 10000))
+
+demo.launch(server_name="0.0.0.0", server_port=port)
 
 def vqa_interface(image, question):
     try:
