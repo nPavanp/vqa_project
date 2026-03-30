@@ -1,0 +1,29 @@
+# Virtual environments
+vqa_env/
+venv/
+env/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# ML stuff
+models/
+weights/
+*.pt
+*.pth
+*.bin
+
+# Data
+data/
+*.jpg
+*.png
+*.zip
+
+# HuggingFace cache
+hf_cache/
+
+# Temp
+temp/
+.vs/
+__MACOSX/

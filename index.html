@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>VQA App</title>
+</head>
+<body>
+
+<h2>Visual Question Answering</h2>
+
+<input type="file" id="image"><br><br>
+<input type="text" id="question" placeholder="Ask a question"><br><br>
+
+<button onclick="send()">Submit</button>
+
+<h3 id="result"></h3>
+
+<script>
+async function send() {
+    const file = document.getElementById("image").files[0];
+    const question = document.getElementById("question").value;
+
+    let formData = new FormData();
+    formData.append("file", file);
+    formData.append("question", question);
+
+    const res = await fetch("http://127.0.0.1:8000/predict", {
+        method: "POST",
+        body: formData
+    });
+
+    const data = await res.json();
+    document.getElementById("result").innerText = data.answer || data.error;
+}
+</script>
+
+</body>
+</html>
