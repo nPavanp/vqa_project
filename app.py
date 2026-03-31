@@ -1,6 +1,7 @@
 import gradio as gr
 from inference import predict
 import os
+from inference import predict
 
 port = int(os.environ.get("PORT", 10000))
 
