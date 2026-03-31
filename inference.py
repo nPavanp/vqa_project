@@ -12,7 +12,7 @@ headers = {
     "Authorization": f"Bearer {HF_TOKEN}"
 }
 
-
+print("HF TOKEN:", HF_TOKEN)
 def predict(image_path, question):
     try:
         # Read image
