@@ -1,10 +1,15 @@
-import gradio as gr
-from inference import predict
-import os
+print("STEP 1: Starting app.py")
 
-# Get Render port
+import gradio as gr
+print("STEP 2: Imported gradio")
+
+from inference import predict
+print("STEP 3: Imported inference")
+
+import os
 port = int(os.environ.get("PORT", 10000))
 
+print("STEP 4: Creating interface")
 
 def vqa_interface(image, question):
     try:
@@ -18,25 +23,16 @@ def vqa_interface(image, question):
         print("ERROR:", str(e))
         return f"Error: {str(e)}"
 
-
 iface = gr.Interface(
     fn=vqa_interface,
     inputs=[
-        gr.Image(type="filepath", label="Upload Image"),
-        gr.Textbox(
-            label="Ask a Question",
-            placeholder="e.g. What is in the image?"
-        )
+        gr.Image(type="filepath"),
+        gr.Textbox()
     ],
-    outputs=gr.Textbox(label="Answer"),
-    title="🧠 Smart Visual Question Answering System",
-    description="Upload any image and ask anything (works for medical + general images)",
-    theme="soft"
+    outputs="text"
 )
 
+print("STEP 5: Before launch")
 
 if __name__ == "__main__":
-    iface.launch(
-        server_name="0.0.0.0",
-        server_port=port
-    )
+    iface.launch(server_name="0.0.0.0", server_port=port)
